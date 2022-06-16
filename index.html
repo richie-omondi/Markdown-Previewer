@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="./js/marked.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Markdown Previewer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script>
+
+        function updatePreview() {
+            let previewElement = document.getElementById("preview");
+            let editorValue = document.getElementById("editor").value;
+            let markedUpHTML = marked(editorValue);
+            previewElement.innerHTML = markedUpHTML;
+        }
+
+        function setDefault() {
+            let defaultText = `\
+# Markdown Previewer
+## Markdown Previewer
+[Link to A Github Page](https://richie-omondi.github.io/Random-Quote-Generator/)
+
+<dl>
+    <dt>Definition list</dt>
+    <dd>Is something people use sometimes.</dd>
+
+    <dt>Markdown in HTML</dt>
+    <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+
+\`Thank you for visiting the page\`
+
+\`\`\`
+function exampleOf {
+    return multiLineCodeBlock;
+}
+\`\`\`
+
+- Code
+- All
+- Week
+                
+> Learn how to write Markdown
+
+**Markdown Previewer**
+
+![Markdown Logo](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Markdown Logo")
+                `;
+
+            let editorField = document.getElementById("editor");
+            let previewElement = document.getElementById("preview");
+            editorField.value = defaultText;
+            previewElement.innerHTML = marked(defaultText)
+        }
+    </script>
+</head>
+  <body onload="setDefault()">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center text-white bg-success my-3">
+        <h1>Markdown Previewer by Richard Orido</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 bg-primary d-flex flex-column">
+                <h2 class="text-white text-center my-3">Editor</h2>
+                <div class="form-group flex-grow-1 d-flex flex-column">
+                <textarea id="editor" onkeyup="updatePreview()" class="form-control flex-grow-1"></textarea>
+                </div>
+            </div>
+            <div class="col-6 bg-danger d-flex flex-column">
+                <h2 class="text-white text text-center my-3">Preview</h2>
+                <div id="preview"></div>
+            </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
+</html>
